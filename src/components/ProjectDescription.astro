@@ -1,0 +1,21 @@
+---
+import type { ProjectDescriptionPart } from '../data/projects';
+
+interface Props {
+	parts: ProjectDescriptionPart[];
+}
+
+const { parts } = Astro.props;
+---
+
+<p class="project-desc">
+	{parts.map((part) =>
+		part.href ? (
+			<a href={part.href} target="_blank" rel="noopener noreferrer">{part.text}</a>
+		) : part.bold ? (
+			<strong>{part.text}</strong>
+		) : (
+			part.text
+		),
+	)}
+</p>

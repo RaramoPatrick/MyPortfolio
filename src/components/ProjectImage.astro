@@ -1,0 +1,42 @@
+---
+interface Props {
+	src: string;
+	alt: string;
+	width?: number;
+	height?: number;
+}
+
+const { src, alt, width = 800, height = 520 } = Astro.props;
+---
+
+<button
+	class="project-image-trigger"
+	type="button"
+	data-lightbox-src={src}
+	data-lightbox-alt={alt}
+	aria-label={`View larger image: ${alt}`}
+>
+	<img src={src} alt={alt} width={width} height={height} loading="lazy" />
+	<span class="image-zoom-hint" aria-hidden="true">View larger</span>
+</button>
+
+<script>
+	const viewer = document.querySelector<HTMLDialogElement>('#image-viewer');
+	const viewerImage = viewer?.querySelector<HTMLImageElement>('.image-viewer-image');
+
+	document.querySelectorAll<HTMLButtonElement>('.project-image-trigger').forEach((trigger) => {
+		trigger.addEventListener('click', () => {
+			const src = trigger.dataset.lightboxSrc;
+
+			if (!viewer || !viewerImage || !src) return;
+
+			viewerImage.src = src;
+			viewerImage.alt = trigger.dataset.lightboxAlt ?? '';
+			viewer.showModal();
+		});
+	});
+
+	viewer?.addEventListener('click', (event) => {
+		if (event.target === viewer) viewer.close();
+	});
+</script>

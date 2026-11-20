@@ -1,22 +1,8 @@
 ---
+import ProjectDescription from '../components/ProjectDescription.astro';
+import ProjectImage from '../components/ProjectImage.astro';
+import { projects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
-
-const projects = [
-	{
-		title: 'Project One',
-		image: '/images/project1.jpg',
-		alt: 'Preview image for project one',
-		description: 'A project from my portfolio. More details will be added as I continue to build.',
-		number: '01',
-	},
-	{
-		title: 'Project Two',
-		image: '/images/project2.jpg',
-		alt: 'Preview image for project two',
-		description: 'Another project in progress as I practice frontend development.',
-		number: '02',
-	},
-];
 ---
 
 <Layout
@@ -29,16 +15,33 @@ const projects = [
 		<p>Small steps, real projects, and plenty of room to keep improving.</p>
 	</section>
 
-	<section class="projects-grid section-shell" aria-label="Portfolio projects">
+	<section class="projects-grid section-shell" aria-label="Installation of FreeWifi 4 All under DICT Projects">
 		{projects.map((project) => (
 			<article class="project-card">
-				<div class="project-image-wrap">
-					<img src={project.image} alt={project.alt} width="800" height="520" loading="lazy" />
-				</div>
+				{project.image ? (
+					<div class="project-image-wrap">
+						<ProjectImage src={project.image} alt={project.imageAlt ?? ''} />
+						<span class="project-category">{project.category}</span>
+					</div>
+				) : (
+					<div class={`project-banner banner-${project.theme}`}>
+						<span class="project-category">{project.category}</span>
+					</div>
+				)}
 				<div class="project-copy">
-					<span class="card-number">{project.number}</span>
 					<h2>{project.title}</h2>
-					<p>{project.description}</p>
+					<ProjectDescription parts={project.description} />
+					{project.caution && <p class="project-caution">{project.caution}</p>}
+					{project.link && (
+						<a
+							class="project-link"
+							href={project.link}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{project.linkLabel} ↗
+						</a>
+					)}
 				</div>
 			</article>
 		))}

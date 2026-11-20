@@ -53,6 +53,12 @@ const links = [
 		<main id="main">
 			<slot />
 		</main>
+		<dialog class="image-viewer" id="image-viewer" aria-label="Image preview">
+			<form method="dialog">
+				<button class="image-viewer-close" type="submit" autofocus>Close</button>
+			</form>
+			<img class="image-viewer-image" alt="" />
+		</dialog>
 		<footer class="site-footer">
 			<div class="footer-inner">
 				<p>© {new Date().getFullYear()} Patrick Allan Ramo</p>

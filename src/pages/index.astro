@@ -1,4 +1,7 @@
 ---
+import ProjectDescription from '../components/ProjectDescription.astro';
+import ProjectImage from '../components/ProjectImage.astro';
+import { projects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -8,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="hero-main">
 				<div>
 					<div class="badge-row">
-						<span class="location-badge">4th-year student</span>
+						<span class="location-badge">4th-year Computer Engineering student</span>
 						<span class="status-badge">Aspiring frontend developer</span>
 					</div>
 					<h1 class="hero-title">
@@ -38,7 +41,7 @@ import Layout from '../layouts/Layout.astro';
 						/>
 					</div>
 					<h2>Patrick Allan Ramo</h2>
-					<p class="profile-role">Web development student</p>
+					<p class="profile-role">Computer Engineering student</p>
 					<div class="profile-focus">
 						<span class="skill-pill">Semantic HTML</span>
 						<span class="skill-pill">Responsive CSS</span>
@@ -55,8 +58,8 @@ import Layout from '../layouts/Layout.astro';
 				<span class="section-kicker">Academic journey</span>
 				<h2 class="section-title">Education</h2>
 				<p class="section-desc">
-					I’m a fourth-year student building a foundation in frontend development and accessible
-					web design.
+					I’m a fourth-year Computer Engineering student building skills across software,
+					hardware, and accessible web design.
 				</p>
 			</div>
 			<div class="edu-grid">
@@ -64,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
 					<div class="edu-header">
 						<div>
 							<h3 class="edu-school">Current studies</h3>
-							<p class="edu-degree">Web development and frontend fundamentals</p>
+							<p class="edu-degree">Computer Engineering</p>
 						</div>
 						<span class="date-pill">4th year</span>
 					</div>
@@ -83,63 +86,43 @@ import Layout from '../layouts/Layout.astro';
 				<span class="section-kicker">Selected work</span>
 				<h2 class="section-title">Projects</h2>
 				<p class="section-desc">
-					A couple of project previews from my portfolio. I’ll add more details as each project
-					takes shape.
+					A selection of my portfolio work, including a tile-cutting system and a flood-hazard
+					classification tool.
 				</p>
 			</div>
 			<div class="projects-grid">
-				<article class="card project-card">
-					<div class="project-banner banner-blue">
-						<span class="project-category">Portfolio project</span>
-						<span aria-hidden="true">01</span>
-					</div>
-					<div class="project-body">
-						<h3 class="project-title">Project One</h3>
-						<p class="project-desc">
-							A project preview. More information about its goals, features, and tools will be
-							added here.
-						</p>
-						<div class="tech-tags">
-							<span class="tag">HTML</span>
-							<span class="tag">CSS</span>
-							<span class="tag">Responsive design</span>
+				{projects.map((project) => (
+					<article class="card project-card">
+						{project.image && (
+							<div class="project-image-wrap">
+								<ProjectImage src={project.image} alt={project.imageAlt ?? ''} />
+								<span class="project-category">{project.category}</span>
+							</div>
+						)}
+						{!project.image && (
+							<div class={`project-banner banner-${project.theme}`}>
+								<span class="project-category">{project.category}</span>
+							</div>
+						)}
+						<div class="project-body">
+							<h3 class="project-title">{project.title}</h3>
+							<ProjectDescription parts={project.description} />
+							{project.caution && <p class="project-caution">{project.caution}</p>}
+							{project.link && (
+								<div class="project-links">
+									<a
+										class="project-link"
+										href={project.link}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{project.linkLabel} ↗
+									</a>
+								</div>
+							)}
 						</div>
-					</div>
-					<img
-						class="project-preview"
-						src="/images/project1.jpg"
-						alt="Preview image for project one"
-						width="800"
-						height="520"
-						loading="lazy"
-					/>
-				</article>
-
-				<article class="card project-card">
-					<div class="project-banner banner-teal">
-						<span class="project-category">Portfolio project</span>
-						<span aria-hidden="true">02</span>
-					</div>
-					<div class="project-body">
-						<h3 class="project-title">Project Two</h3>
-						<p class="project-desc">
-							Another project preview. Details and links can be added when they’re ready to share.
-						</p>
-						<div class="tech-tags">
-							<span class="tag">HTML</span>
-							<span class="tag">CSS</span>
-							<span class="tag">Learning project</span>
-						</div>
-					</div>
-					<img
-						class="project-preview"
-						src="/images/project2.jpg"
-						alt="Preview image for project two"
-						width="800"
-						height="520"
-						loading="lazy"
-					/>
-				</article>
+					</article>
+				))}
 			</div>
 		</div>
 	</section>
@@ -150,7 +133,8 @@ import Layout from '../layouts/Layout.astro';
 				<span class="section-kicker">Learning by doing</span>
 				<h2 class="section-title">Current focus</h2>
 				<p class="section-desc">
-					I’m developing my frontend skills by building, reviewing, and improving responsive pages.
+					I’m developing software, hardware, and creative skills through hands-on projects and
+					course training.
 				</p>
 			</div>
 			<div class="timeline">
@@ -167,6 +151,32 @@ import Layout from '../layouts/Layout.astro';
 							<li>Build responsive layouts with Flexbox, CSS Grid, and media queries.</li>
 							<li>Explore UI design concepts and strengthen problem-solving skills.</li>
 						</ul>
+					</div>
+				</article>
+				<article class="card work-card">
+					<div class="work-meta">
+						<span class="work-date">June 19–23, 2023</span>
+						<span class="work-type">40-hour course</span>
+					</div>
+					<div class="work-content">
+						<h3>40-hour Python Programming Essentials Course Training</h3>
+						<p class="work-org">Completed course training</p>
+						<ul class="work-list">
+							<li>
+								Completed structured training to build a foundation in Python programming.
+							</li>
+							<li>
+								Practiced programming concepts through course exercises and problem-solving.
+							</li>
+						</ul>
+						<div class="certificate-preview project-image-wrap">
+							<ProjectImage
+								src="/certificates/python-programming-essentials.png"
+								alt="Certificate of participation for the 40-hour Python Programming Essentials Course Training"
+								width={1684}
+								height={1191}
+							/>
+						</div>
 					</div>
 				</article>
 			</div>
@@ -194,6 +204,28 @@ import Layout from '../layouts/Layout.astro';
 						<span class="skill-pill">Flexbox</span>
 						<span class="skill-pill">CSS Grid</span>
 						<span class="skill-pill">Media queries</span>
+					</div>
+				</article>
+				<article class="card">
+					<h3 class="skill-group-title">
+						<span class="skill-icon-box" aria-hidden="true">⌘</span>
+						Engineering &amp; hardware projects
+					</h3>
+					<div class="pill-cloud">
+						<span class="skill-pill">Arduino-based projects</span>
+						<span class="skill-pill">Electrical projects</span>
+						<span class="skill-pill">Hardware projects</span>
+					</div>
+				</article>
+				<article class="card">
+					<h3 class="skill-group-title">
+						<span class="skill-icon-box" aria-hidden="true">✦</span>
+						Creative software
+					</h3>
+					<div class="pill-cloud">
+						<span class="skill-pill">Adobe Photoshop</span>
+						<span class="skill-pill">Adobe Premiere Pro</span>
+						<span class="skill-pill">Adobe After Effects</span>
 					</div>
 				</article>
 				<article class="card">
@@ -232,6 +264,16 @@ import Layout from '../layouts/Layout.astro';
 					<h3>Sharpening problem-solving</h3>
 					<p>I like breaking ideas into manageable steps and learning from each project.</p>
 				</article>
+				<article class="card hobby-card">
+					<div class="hobby-emoji" aria-hidden="true">⌕</div>
+					<h3>Hardware troubleshooting</h3>
+					<p>I enjoy diagnosing hardware issues and finding practical solutions.</p>
+				</article>
+				<article class="card hobby-card">
+					<div class="hobby-emoji" aria-hidden="true">⚡</div>
+					<h3>Electrical troubleshooting</h3>
+					<p>I’m interested in identifying and resolving electrical project issues.</p>
+				</article>
 			</div>
 		</div>
 	</section>
@@ -243,11 +285,15 @@ import Layout from '../layouts/Layout.astro';
 					<span class="section-kicker">Let’s connect</span>
 					<h2>Interested in collaborating or talking about web development?</h2>
 					<p>
-						I’d be glad to hear from you. My contact details are not included yet, so please use
-						the Contact page to add your preferred email or social links.
+						I’d be glad to hear from you about web development, engineering projects, or other
+						collaborations.
 					</p>
 				</div>
 				<div class="contact-links">
+					<a href="mailto:ramopatrickallan@gmail.com" class="contact-item">
+						<span>ramopatrickallan@gmail.com</span>
+						<span aria-hidden="true">Email ↗</span>
+					</a>
 					<a href="/contact/" class="contact-item">
 						<span>Open contact page</span>
 						<span aria-hidden="true">↗</span>
