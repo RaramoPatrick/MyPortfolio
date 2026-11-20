@@ -1,11 +1,263 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+	<section class="hero" id="top">
+		<div class="container hero-grid">
+			<div class="hero-main">
+				<div>
+					<div class="badge-row">
+						<span class="location-badge">4th-year student</span>
+						<span class="status-badge">Aspiring frontend developer</span>
+					</div>
+					<h1 class="hero-title">
+						Hi, I’m <span>Patrick Allan Ramo</span> — learning to build thoughtful, responsive websites.
+					</h1>
+					<p class="hero-tagline">
+						I enjoy turning ideas into clean, accessible web pages. I’m currently focused on
+						semantic HTML5, Flexbox, and CSS Grid while developing projects for my portfolio.
+					</p>
+				</div>
+				<div class="hero-actions">
+					<a href="#projects" class="btn btn-primary">Explore my projects</a>
+					<a href="#education" class="btn btn-secondary">About my studies</a>
+				</div>
+			</div>
+
+			<aside class="hero-side" aria-label="Profile">
+				<div class="profile-card">
+					<div class="avatar-ring">
+						<img
+							src="/images/profile.jpg"
+							alt="Portrait of Patrick Allan Ramo"
+							class="avatar-img"
+							width="240"
+							height="240"
+							fetchpriority="high"
+						/>
+					</div>
+					<h2>Patrick Allan Ramo</h2>
+					<p class="profile-role">Web development student</p>
+					<div class="profile-focus">
+						<span class="skill-pill">Semantic HTML</span>
+						<span class="skill-pill">Responsive CSS</span>
+						<span class="skill-pill">Flexbox &amp; Grid</span>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section id="education">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">Academic journey</span>
+				<h2 class="section-title">Education</h2>
+				<p class="section-desc">
+					I’m a fourth-year student building a foundation in frontend development and accessible
+					web design.
+				</p>
+			</div>
+			<div class="edu-grid">
+				<article class="card">
+					<div class="edu-header">
+						<div>
+							<h3 class="edu-school">Current studies</h3>
+							<p class="edu-degree">Web development and frontend fundamentals</p>
+						</div>
+						<span class="date-pill">4th year</span>
+					</div>
+					<p class="edu-details">
+						My current focus is semantic HTML, responsive CSS, Flexbox, CSS Grid, and building
+						real-world projects for my portfolio.
+					</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="projects">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">Selected work</span>
+				<h2 class="section-title">Projects</h2>
+				<p class="section-desc">
+					A couple of project previews from my portfolio. I’ll add more details as each project
+					takes shape.
+				</p>
+			</div>
+			<div class="projects-grid">
+				<article class="card project-card">
+					<div class="project-banner banner-blue">
+						<span class="project-category">Portfolio project</span>
+						<span aria-hidden="true">01</span>
+					</div>
+					<div class="project-body">
+						<h3 class="project-title">Project One</h3>
+						<p class="project-desc">
+							A project preview. More information about its goals, features, and tools will be
+							added here.
+						</p>
+						<div class="tech-tags">
+							<span class="tag">HTML</span>
+							<span class="tag">CSS</span>
+							<span class="tag">Responsive design</span>
+						</div>
+					</div>
+					<img
+						class="project-preview"
+						src="/images/project1.jpg"
+						alt="Preview image for project one"
+						width="800"
+						height="520"
+						loading="lazy"
+					/>
+				</article>
+
+				<article class="card project-card">
+					<div class="project-banner banner-teal">
+						<span class="project-category">Portfolio project</span>
+						<span aria-hidden="true">02</span>
+					</div>
+					<div class="project-body">
+						<h3 class="project-title">Project Two</h3>
+						<p class="project-desc">
+							Another project preview. Details and links can be added when they’re ready to share.
+						</p>
+						<div class="tech-tags">
+							<span class="tag">HTML</span>
+							<span class="tag">CSS</span>
+							<span class="tag">Learning project</span>
+						</div>
+					</div>
+					<img
+						class="project-preview"
+						src="/images/project2.jpg"
+						alt="Preview image for project two"
+						width="800"
+						height="520"
+						loading="lazy"
+					/>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="experience">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">Learning by doing</span>
+				<h2 class="section-title">Current focus</h2>
+				<p class="section-desc">
+					I’m developing my frontend skills by building, reviewing, and improving responsive pages.
+				</p>
+			</div>
+			<div class="timeline">
+				<article class="card work-card">
+					<div class="work-meta">
+						<span class="work-date">Ongoing</span>
+						<span class="work-type">Personal learning</span>
+					</div>
+					<div class="work-content">
+						<h3>Frontend development</h3>
+						<p class="work-org">Portfolio and practice projects</p>
+						<ul class="work-list">
+							<li>Practice semantic HTML and accessible page structure.</li>
+							<li>Build responsive layouts with Flexbox, CSS Grid, and media queries.</li>
+							<li>Explore UI design concepts and strengthen problem-solving skills.</li>
+						</ul>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="skills">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">Capabilities</span>
+				<h2 class="section-title">Skills &amp; tools</h2>
+				<p class="section-desc">
+					Topics I’m learning and practicing as I grow as a frontend developer.
+				</p>
+			</div>
+			<div class="skills-grid">
+				<article class="card">
+					<h3 class="skill-group-title">
+						<span class="skill-icon-box" aria-hidden="true">&lt;/&gt;</span>
+						Frontend foundations
+					</h3>
+					<div class="pill-cloud">
+						<span class="skill-pill">Semantic HTML5</span>
+						<span class="skill-pill">Responsive CSS</span>
+						<span class="skill-pill">Flexbox</span>
+						<span class="skill-pill">CSS Grid</span>
+						<span class="skill-pill">Media queries</span>
+					</div>
+				</article>
+				<article class="card">
+					<h3 class="skill-group-title">
+						<span class="skill-icon-box" aria-hidden="true">✦</span>
+						Working habits
+					</h3>
+					<div class="pill-cloud">
+						<span class="skill-pill">Git &amp; deployment</span>
+						<span class="skill-pill">Accessible design</span>
+						<span class="skill-pill">UI exploration</span>
+						<span class="skill-pill">Problem-solving</span>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="hobbies">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">Beyond the classroom</span>
+				<h2 class="section-title">Interests</h2>
+				<p class="section-desc">
+					Things that keep me curious and creative outside of building web pages.
+				</p>
+			</div>
+			<div class="hobbies-grid">
+				<article class="card hobby-card">
+					<div class="hobby-emoji" aria-hidden="true">✎</div>
+					<h3>Exploring UI design</h3>
+					<p>I enjoy exploring interface ideas and how small design choices improve usability.</p>
+				</article>
+				<article class="card hobby-card">
+					<div class="hobby-emoji" aria-hidden="true">⌘</div>
+					<h3>Sharpening problem-solving</h3>
+					<p>I like breaking ideas into manageable steps and learning from each project.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="contact" class="footer-section">
+		<div class="container">
+			<div class="contact-banner">
+				<div>
+					<span class="section-kicker">Let’s connect</span>
+					<h2>Interested in collaborating or talking about web development?</h2>
+					<p>
+						I’d be glad to hear from you. My contact details are not included yet, so please use
+						the Contact page to add your preferred email or social links.
+					</p>
+				</div>
+				<div class="contact-links">
+					<a href="/contact/" class="contact-item">
+						<span>Open contact page</span>
+						<span aria-hidden="true">↗</span>
+					</a>
+					<a href="/projects/" class="contact-item">
+						<span>View project details</span>
+						<span aria-hidden="true">↗</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>

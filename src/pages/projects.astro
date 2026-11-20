@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+	{
+		title: 'Project One',
+		image: '/images/project1.jpg',
+		alt: 'Preview image for project one',
+		description: 'A project from my portfolio. More details will be added as I continue to build.',
+		number: '01',
+	},
+	{
+		title: 'Project Two',
+		image: '/images/project2.jpg',
+		alt: 'Preview image for project two',
+		description: 'Another project in progress as I practice frontend development.',
+		number: '02',
+	},
+];
+---
+
+<Layout
+	title="Projects"
+	description="Selected projects by Patrick Allan Ramo."
+>
+	<section class="page-intro section-shell">
+		<p class="eyebrow">Selected work</p>
+		<h1>Projects<span>.</span></h1>
+		<p>Small steps, real projects, and plenty of room to keep improving.</p>
+	</section>
+
+	<section class="projects-grid section-shell" aria-label="Portfolio projects">
+		{projects.map((project) => (
+			<article class="project-card">
+				<div class="project-image-wrap">
+					<img src={project.image} alt={project.alt} width="800" height="520" loading="lazy" />
+				</div>
+				<div class="project-copy">
+					<span class="card-number">{project.number}</span>
+					<h2>{project.title}</h2>
+					<p>{project.description}</p>
+				</div>
+			</article>
+		))}
+	</section>
+</Layout>
